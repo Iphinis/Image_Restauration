@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 
-import algo as algo
-import data as data
+import algo
+import data
 
-import affichage as affichage
+import affichage
 
 
 ####################################################
@@ -40,8 +40,7 @@ if(choixPartie == '1' or choixPartie == '2'):
     
     ###############################################
     ## Parametres du probleme
-    # Modifier ICI:
-    N = 101
+    N = 100
     hh = 1./(N+1)
     alpha = 0.0
     
@@ -55,7 +54,6 @@ if(choixPartie == '1' or choixPartie == '2'):
     ## Solution exacte :
     solex = np.cos(np.arange(1,N+1)*hh*2*np.pi)
     ## Et second membre associé :
-    # Completer ICI :
     bb = data.produit1(solex, ddata)
     ###############################################
         
@@ -72,7 +70,7 @@ if(choixPartie == '1' or choixPartie == '2'):
         if(choixMethode == '3'):
             xx, residus = algo.CG(data.produit1,x0,bb,ddata,iteMax,tol)
         if(choixMethode == '4'):
-            xx, residus = algo.PCG(data.produit1,data.diag1,x0,bb,ddata,iteMax,tol)    
+            xx, residus = algo.PCG(data.produit1,data.diag1,x0,bb,ddata,iteMax,tol)
         ###############################################
     
         ###############################################
@@ -97,7 +95,7 @@ if(choixPartie == '1' or choixPartie == '2'):
         
         ###############################################
         ## Affichage comparatif des courbes de convergence :
-        affichage.afficherConv([np.arange(0,len(residusJacob)), np.arange(0,len(residusDesce)), np.arange(0,len(residusCG))],[(residusJacob),(residusDesce),(residusCG)])
+        affichage.afficherConv([np.arange(0,len(residusJacob)), np.arange(0,len(residusDesce)), np.arange(0,len(residusCG))],[(residusJacob),(residusDesce),(residusCG)], ["Jacobi", "Gradient Descent", "Conjugate Gradient"])
         ###############################################
     ###############################################    
         

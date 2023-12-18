@@ -26,7 +26,6 @@ def diag1(x,ddata):
     alpha,h = ddata
     res = x * 0.
 
-    # Completer ICI :
     res = (1 / (2 + alpha * h ** 2)) * x
     
     return res
